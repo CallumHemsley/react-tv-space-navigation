@@ -16,7 +16,7 @@ export const Home = () => {
   return (
     <Page>
       <TitleContainer>
-        <Title variant="title">Hoppix (WebView Version)</Title>
+        <Title variant="title">Hoppix - WebView Version</Title>
       </TitleContainer>
       <DefaultFocus>
         <SpatialNavigationScrollView

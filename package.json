@@ -48,7 +48,8 @@
     "react-native-web": "^0.19.6"
   },
   "resolutions": {
-    "@typescript-eslint/typescript-estree": "5.61.0"
+    "@typescript-eslint/typescript-estree": "5.61.0",
+    "@expo/metro-config": "0.7.1"
   },
   "scripts": {
     "changelog": "conventional-changelog -p conventionalcommits -r 0 -o CHANGELOG.md",

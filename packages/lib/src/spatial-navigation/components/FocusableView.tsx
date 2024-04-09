@@ -1,9 +1,8 @@
 import { SpatialNavigationNode, SpatialNavigationNodeDefaultProps } from './Node';
 import { Platform, View, ViewStyle, ViewProps } from 'react-native';
-import { forwardRef, useImperativeHandle, useMemo, useRef } from 'react';
+import { forwardRef, useImperativeHandle, useRef } from 'react';
 import { SpatialNavigationNodeRef } from '../types/SpatialNavigationNodeRef';
 import { useSpatialNavigationDeviceType } from '../context/DeviceContext';
-import { useSpatialNavigatorFocusableAccessibilityProps } from '../hooks/useSpatialNavigatorFocusableAccessibilityProps';
 
 type FocusableViewProps = {
   style?: ViewStyle;
@@ -82,18 +81,8 @@ type InnerFocusableViewProps = FocusableViewProps & {
 
 const InnerFocusableView = forwardRef<View, InnerFocusableViewProps>(
   ({ viewProps, webProps, children, isActive, isFocused, style }, ref) => {
-    const accessibilityProps = useSpatialNavigatorFocusableAccessibilityProps();
-    const accessibilityState = useMemo(() => ({ selected: isFocused }), [isFocused]);
-
     return (
-      <View
-        ref={ref}
-        style={style}
-        accessibilityState={accessibilityState}
-        {...accessibilityProps}
-        {...viewProps}
-        {...webProps}
-      >
+      <View ref={ref} style={style} {...viewProps} {...webProps}>
         {typeof children === 'function' ? children({ isFocused, isActive }) : children}
       </View>
     );
